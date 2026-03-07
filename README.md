@@ -1,14 +1,16 @@
-# GCP Hardening Toolkit
+# GCP Hardening Toolkit (GHT)
 
 ![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.3-935ADA)
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB)
 ![Bash](https://img.shields.io/badge/Bash-Shell-4EAA25)
-![Release](https://img.shields.io/badge/Release-Rolling-red)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue)
+![Release](https://img.shields.io/badge/Release-Rolling-4B5563)
 
-This repository contains a collection of curated Terraform modules designed to enhance the security posture of your Google Cloud Platform (GCP) environment. Each module is a reusable, documented, and tested component that applies a specific security best practice.
+The GCP Hardening Toolkit (GHT) is an automated triage and remediation engine designed to safely manage security debt in complex, active (brownfield) Google Cloud environments. 
 
-## Repository Structure
+While standard foundational toolkits provide blueprints for building from scratch, GHT is engineered for the realities of existing infrastructure. It combines state-aware Infrastructure as Code (IaC) with active triage automation, empowering security task forces to rapidly audit environments, identify vulnerabilities, and deploy incremental compliance guardrails—without disrupting active DevOps pipelines.
+
+## Repository Strucure
 
 The repository follows a **Library + Blueprints** architecture, decoupled to allow flexible composition.
 
@@ -137,7 +139,9 @@ We recommend pinning modules to a specific commit hash to ensure stability.
 
 ```hcl
 module "gcp_hardening" {
-  source = "https://github.com/GoogleCloudPlatform/gcp-hardening-toolkit/tree/main/modules/gcp-org-policies?ref=ab1e62f5"
+  # The standard Terraform GitHub shorthand with the // subdirectory separator
+  source = "github.com/GoogleCloudPlatform/gcp-hardening-toolkit//modules/gcp-org-policies?ref=ab1e62f5"
+  
   # ...
 }
 ```
