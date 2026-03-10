@@ -1,4 +1,4 @@
-name: Hash Release
+name: Enterprise Rolling Release
 on:
   push:
     branches:
@@ -14,17 +14,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Get Short SHA
-        run: echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
+      - name: Generate Enterprise Tag
+        run: |
+          SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)
+          # Generates format: YYYY.MM.DD
+          DATE_TAG=$(date +'%Y.%m.%d')
+          echo "RELEASE_TAG=v${DATE_TAG}-${SHORT_SHA}" >> $GITHUB_ENV
+          echo "SHORT_SHA=${SHORT_SHA}" >> $GITHUB_ENV
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          # GitHub does not allow tags to be the full 40-char SHA (ambiguity)
-          tag_name: ${{ env.SHORT_SHA }}
-          name: "Build ${{ env.SHORT_SHA }}"
-          body: "Stable release for commit ${{ github.sha }}."
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: "Release ${{ env.RELEASE_TAG }}"
+          body: "Automated rolling release for GHT. Based on commit ${{ github.sha }}."
           draft: false
           prerelease: false
