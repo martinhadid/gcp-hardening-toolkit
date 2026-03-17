@@ -1,0 +1,6 @@
+description = "Execute a custom SQL query in BigQuery."
+prompt = """
+Use the `bigquery` tool `execute_sql` to run a SQL query.
+Ask for the SQL query and the Project ID if they are not provided.
+Guide the user through writing safe and efficient queries if needed.
+"""

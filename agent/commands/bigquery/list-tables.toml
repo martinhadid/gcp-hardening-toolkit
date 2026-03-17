@@ -1,0 +1,5 @@
+description = "List all table IDs in a BigQuery dataset."
+prompt = """
+Use the `bigquery` tool `list_table_ids` to retrieve all tables for a specified project and dataset.
+Ask for the Project ID and Dataset ID if they are not provided.
+"""

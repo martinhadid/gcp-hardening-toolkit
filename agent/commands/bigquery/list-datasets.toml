@@ -1,0 +1,5 @@
+description = "List all dataset IDs in a GCP project."
+prompt = """
+Use the `bigquery` tool `list_dataset_ids` to retrieve all datasets for a specified project.
+If no Project ID is provided, ask the user for one.
+"""

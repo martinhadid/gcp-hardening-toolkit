@@ -1,0 +1,5 @@
+description = "Show detailed information and schema for a BigQuery table."
+prompt = """
+Use the `bigquery` tool `get_table_info` to retrieve metadata and schema for a specified project, dataset, and table.
+Ask for the Project ID, Dataset ID, and Table ID if they are not provided.
+"""

@@ -1,0 +1,5 @@
+description = "Show detailed information and metadata for a BigQuery dataset."
+prompt = """
+Use the `bigquery` tool `get_dataset_info` to retrieve metadata for a specified project and dataset.
+Ask for the Project ID and Dataset ID if they are not provided.
+"""
